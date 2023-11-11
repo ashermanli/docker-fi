@@ -1,0 +1,17 @@
+#Run an ubuntu container that will ask the user to input website
+>docker run -d -it --name website ubuntu sh -c 'while true; do echo "input website"; read website; echo "searching..."; sleep 1; curl http://$website; done'
+
+#Curl is not currently installed in our container and will not function.  use an exec to get into container and install curl
+>docker exec -it website bash
+
+#Once inside container run apt-get update, then install curl
+>apt-get update
+>apt-get install -y curl
+>exit
+
+#After installing curl, attach to container
+>docker attach website
+
+#once inside container you will be prompted to input website, type helsinki.fi and receive output
+>helsinki.fi
+
