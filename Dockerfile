@@ -1,4 +1,4 @@
-#start from the alpine iage that is smaller but not fancy tools
+#start from the alpine image that is smaller but not fancy tools
 FROM alpine:3.13
 
 #use /usr/src/app as our workdir. the following instructions will be executed in this location
