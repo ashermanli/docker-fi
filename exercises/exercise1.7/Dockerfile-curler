@@ -1,0 +1,18 @@
+#start from an ubuntu image
+FROM ubuntu:20.04
+
+#use /usr/src/app as our workdir. The following instructions will be executed in this locations
+WORKDIR /usr/src/app
+
+#copy the website.sh from this location to /usr/src/app creating /usr/src/app/website.sh
+COPY website.sh .
+
+#add executions permissions during the build
+RUN chmod +x website.sh
+
+#install curl so our file is able to run properly
+RUN apt-get update
+RUN apt-get install -y curl
+
+#when running docker run the command will be ./website.sh
+CMD ./website.sh
