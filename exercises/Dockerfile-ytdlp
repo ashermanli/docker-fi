@@ -12,8 +12,10 @@ RUN chmod a+rx /usr/local/bin/yt-dlp
 
 ENV LC_ALL=C.UTF-8
 
+#Pair entrypoint with cmd to feed it the arguments for this example
 #ENTRYPOINT ["/usr/local/bin/yt-dlp"]
-#ENTRYPOINT /usr/local/bin/yt-dlp
 #CMD ["-o","ytexample.txt","BaW_jenozKc"]
-#CMD -o - BaW_jenozKc > ytexample.txt
+
+#Using exec form of entrypoint and cmd doesn't allow for redirection
+#using just cmd we call yt-dlp with our arguments and then we can redirect
 CMD yt-dlp -o - BaW_jenozKc > ytexample.txt
