@@ -2,10 +2,17 @@ FROM ubuntu:18.04
 
 WORKDIR /mydir
 
-RUN apt-get update && apt-get install -y curl python
-RUN curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
-RUN chmod a+x /usr/local/bin/youtube-dl 
+#RUN apt-get update && apt-get install -y software-properties-common
+RUN apt-get update && apt-get install -y curl software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get install -y python3.7
+RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
+#RUN add-apt-repository ppa:tomtomtom/yt-dlp
+#RUN apt update
+#RUN apt install yt-dlp
+RUN chmod a+rx /usr/local/bin/yt-dlp
 
 ENV LC_ALL=C.UTF-8
+#ENV PYTHONPATH "${PYTHONPATH}:/usr/local/bin/yt-dlp"
 
-ENTRYPOINT ["/usr/local/bin/youtube-dl"]
+ENTRYPOINT ["/usr/local/bin/yt-dlp"]
