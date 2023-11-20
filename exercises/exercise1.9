@@ -1,1 +1,8 @@
+#The verbose way of doing it
 docker run -v /Users/abrahamsaucedo/Dev/docker-fi/log.txt:/usr/src/app/text.log devopsdockeruh/simple-web-service
+
+#The concise way of doing ti
+#if the file does not exist, the -v flag will create it as a directory and throw and error
+#source: docker bind mount docs
+
+docker run -v "$(pwd)/text.log:/usr/src/app/text.log" devopsdockeruh/simple-web-service
