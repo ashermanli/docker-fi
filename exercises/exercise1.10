@@ -1,1 +1,3 @@
+#we must specify the ip before the port or we risk exposing the port to everyone on the internet
+#the short form "-p 3000:8080" is equivalent to 0.0.0.0:3000:8080
 docker run -p 127.0.0.1:3000:8080 devopsdockeruh/simple-web-service server
